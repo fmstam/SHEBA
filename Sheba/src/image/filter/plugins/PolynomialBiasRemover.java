@@ -28,7 +28,7 @@ import image.filter.ImageFilter;
 import image.filter.ImageFilterPlugin;
 import image.io.ImageIO;
 import math.GeneralMath;
-import util.plugin.PipeLine;
+import util.plugin.Pipeline;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,7 +81,7 @@ public class PolynomialBiasRemover implements ImageFilterPlugin<DoubleImage, Obj
 
 
             // build a pipeline to scale image and estmate the polynomial surface 
-            PipeLine pipeline = new PipeLine();
+            Pipeline pipeline = new Pipeline();
             pipeline.addBullet(new Scale(downSamplingFactor)); // scale down
             pipeline.addBullet(new IlluminationSurface(IlluminationSurface.SurfaceType.Polynomial, polynomialDegree)); // estimate the illumination field
             pipeline.addBullet(new Scale((1 / downSamplingFactor))); // scale up back    

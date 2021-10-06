@@ -17,13 +17,13 @@ import image.filter.ImageFilter;
  * @see ChannelFilter
  * @author faroqal-tam
  */
-public class Bullet {
+public class Task {
     Plugin plugin;
     Object payload;
 
-    public Bullet(Bullet bullet){
-        this.plugin=bullet.getPlugin();
-        payload= bullet.getPayload();
+    public Task(Task task){
+        this.plugin=task.getPlugin();
+        payload= task.getPayload();
     }
     public Plugin getPlugin() {
         return plugin;
@@ -41,7 +41,7 @@ public class Bullet {
         this.payload = payload;
     }
 
-    public Bullet(Plugin command, Object payload) {
+    public Task(Plugin command, Object payload) {
         this.plugin = command;
         this.payload = payload;
     }

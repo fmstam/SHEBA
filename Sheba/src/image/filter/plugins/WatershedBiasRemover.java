@@ -45,7 +45,7 @@ import optimization.DynamicProgramming;
 import optimization.Solution;
 import util.DoubleLabledPoint;
 import util.LabeledPoint;
-import util.plugin.PipeLine;
+import util.plugin.Pipeline;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.Arrays;
@@ -252,7 +252,7 @@ public class WatershedBiasRemover extends PolynomialBiasRemover {
             if (hsbImage != null) {
                 this.ifieldImage = (DoubleImage) ImageConvertor.convert(outImage, new Grayscale(), ImageConvertor.GRAYSCALE_WEIGHTS_BT709);
             }
-            PipeLine pipeline = new PipeLine();
+            Pipeline pipeline = new Pipeline();
             pipeline.addBullet(new Scale(downSamplingFactor)); // scale down
             pipeline.addBullet(new IlluminationSurface(IlluminationSurface.SurfaceType.Polynomial, 3)); // estimate the illumination field
             pipeline.addBullet(new Scale((1 / downSamplingFactor))); // scale up back    

@@ -9,7 +9,7 @@ import channel.ChannelFilterPlugin;
 import channel.DoubleChannel;
 import channel.math.BiChannelMathPlugin;
 import channel.math.SimpleChannelMathPlugin;
-import util.plugin.PipeLine;
+import util.plugin.Pipeline;
 import image.DoubleImage;
 import image.ImageException;
 import math.SimpleMathPulgin;
@@ -92,7 +92,7 @@ public class ImageFilter {
         return (DoubleImage) filter.filter(image, params);
     }
 
-    public DoubleImage run(DoubleImage image, PipeLine pipeLine) {
+    public DoubleImage run(DoubleImage image, Pipeline pipeLine) {
         DoubleImage result = null;
         try {
 
@@ -103,7 +103,7 @@ public class ImageFilter {
 
             // filter each channel
             for (int i = 0; i < numChannels; i++) {
-                PipeLine copyPipline = new PipeLine(pipeLine);
+                Pipeline copyPipline = new Pipeline(pipeLine);
                 DoubleChannel inChannel = image.getChannel(i);
                 channels[i] = ChannelFilter.run(inChannel, copyPipline);
             }
@@ -276,7 +276,7 @@ public class ImageFilter {
     }
     
     
-    public DoubleImage calculate(DoubleImage image, PipeLine pipeLine) {
+    public DoubleImage calculate(DoubleImage image, Pipeline pipeLine) {
         DoubleImage result = null;
         try {
 
@@ -287,7 +287,7 @@ public class ImageFilter {
 
             // filter each channel
             for (int i = 0; i < numChannels; i++) {
-                PipeLine copyPipline = new PipeLine(pipeLine);
+                Pipeline copyPipline = new Pipeline(pipeLine);
                 DoubleChannel inChannel = image.getChannel(i);
                 channels[i] = ChannelFilter.calculate(inChannel, copyPipline);
             }

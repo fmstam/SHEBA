@@ -4,8 +4,8 @@
  */
 package channel;
 
-import util.plugin.Bullet;
-import util.plugin.PipeLine;
+import util.plugin.Task;
+import util.plugin.Pipeline;
 import util.plugin.Plugin;
 import util.Region;
 import math.MatrixMath;
@@ -54,9 +54,9 @@ public abstract class ChannelFilter {
      * @param pipeLine
      * @return
      */
-    public static DoubleChannel run(DoubleChannel inChannel, PipeLine pipeLine) {
+    public static DoubleChannel run(DoubleChannel inChannel, Pipeline pipeLine) {
 
-        Bullet bullet = pipeLine.getNextBullet();
+        Task bullet = pipeLine.getNextBullet();
         DoubleChannel outChannel = inChannel;
         while (bullet != null) {
             Plugin plugin = bullet.getPlugin();
@@ -201,7 +201,7 @@ public abstract class ChannelFilter {
      * @see SimpleMathPulgin
      * @see BiMathPlugin
      */
-    public static DoubleChannel calculate(DoubleChannel inChannel, PipeLine pipeLine) {
+    public static DoubleChannel calculate(DoubleChannel inChannel, Pipeline pipeLine) {
         int numRows = inChannel.numRows();
         int numCols = inChannel.numCols();
         // the result channel
@@ -209,8 +209,8 @@ public abstract class ChannelFilter {
 
         for (int r = 0; r < numRows; r++) {
             for (int c = 0; c < numCols; c++) {
-                PipeLine temp = new PipeLine(pipeLine);
-                Bullet bullet = temp.getNextBullet();
+                Pipeline temp = new Pipeline(pipeLine);
+                Task bullet = temp.getNextBullet();
                 double rsValue = inChannel.get(r, c);
                 while (bullet != null) {
                     Plugin plugin = bullet.getPlugin();

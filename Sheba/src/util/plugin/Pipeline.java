@@ -7,17 +7,17 @@ package util.plugin;
 import java.util.LinkedList;
 
 /**
- * Warper for a set of commands to be used by a given filter, calculation
- * function.
+ * Wrapper for a set of commands to be used by a given filter
+ * 
  *
  * @author faroqal-tam
  */
-public class PipeLine {
+public class Pipeline {
 
-    LinkedList<Bullet> chain = new LinkedList<Bullet>();
+    LinkedList<Task> chain = new LinkedList<Task>();
 
-    public void addBullet(Bullet bullet) {
-        chain.addLast(bullet);
+    public void addBullet(Task task) {
+        chain.addLast(task);
     }
 
     /**
@@ -27,23 +27,22 @@ public class PipeLine {
      * @param payload
      */
     public void addBullet(Plugin plugin, Object... payload) {
-        // it has to be fixed such that it match the plug in with the input type and does the possible correction
-        chain.add(new Bullet(plugin, payload));
+        chain.add(new Task(plugin, payload));
     }
 
-    public PipeLine(){
+    public Pipeline(){
         
     }
-    public PipeLine(PipeLine pipeLine){
-      for(Bullet b: pipeLine.chain){
-          chain.add(new Bullet(b));
+    public Pipeline(Pipeline pipeLine){
+      for(Task b: pipeLine.chain){
+          chain.add(new Task(b));
       } 
     }
     /**
      * Dequeue the next command
      * @return 
      */
-    public Bullet getNextBullet() {
+    public Task getNextBullet() {
         if (chain.isEmpty()) {
             return null;
         }
