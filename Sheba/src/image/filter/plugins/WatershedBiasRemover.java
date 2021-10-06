@@ -169,7 +169,6 @@ public class WatershedBiasRemover extends PolynomialBiasRemover {
                 double tv = imageFilter.calculate(mag, new Sum())[0];
                 mag = imageFilter.calculate(mag, GeneralMath.normalize, 255.0);
                 mag = imageFilter.calculate(mag, GeneralMath.ceil);
-                //ImageIO.saveImage(mag, "/Users/faroq/Documents/PhD/dataSet/output/b" + it + ".tiff");
 
                 
                 // put the bias again in log with the actual image 
@@ -233,7 +232,6 @@ public class WatershedBiasRemover extends PolynomialBiasRemover {
 
             }
 
-            //gimage = imageFilter.calculate(gimage, GeneralMath.times, 255.0); 
             if (hsbImage != null) { // we dealt with a colored image
                 // if is colored replace the B channel in the HSB domain, and then, convert it back to RGB
                 hsbImage.setChannel(2, lastImage.getChannel(0));
