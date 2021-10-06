@@ -9,4 +9,4 @@ The next step was to create a GUI such that the user can create pipelines graphi
 
 I used this package in some of my applications and publications, I found it myself very helpful, I could not not maintain it since I have switched to python where it already has very nice packages, but for any Java application this can be helpful to build a core package.
 
-> It has some examples on how to use and create a plugin, pipleline, or evern filters. 
+> It has some examples on how to use and create a plugin, pipleline, or even filters. 
