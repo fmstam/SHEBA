@@ -196,9 +196,9 @@ public class IterativeBiasRemover extends PolynomialBiasRemover {
                 this.ifieldImage= (DoubleImage)ImageConvertor.convert(outImage,new Grayscale(), ImageConvertor.GRAYSCALE_WEIGHTS_BT709);    
             }
             Pipeline pipeline = new Pipeline();
-            pipeline.addBullet(new Scale(downSamplingFactor)); // scale down
-            pipeline.addBullet(new IlluminationSurface(IlluminationSurface.SurfaceType.Polynomial, 3)); // estimate the illumination field
-            pipeline.addBullet(new Scale((1 / downSamplingFactor))); // scale up back    
+            pipeline.addTask(new Scale(downSamplingFactor)); // scale down
+            pipeline.addTask(new IlluminationSurface(IlluminationSurface.SurfaceType.Polynomial, 3)); // estimate the illumination field
+            pipeline.addTask(new Scale((1 / downSamplingFactor))); // scale up back    
             
             this.ifieldImage = imageFilter.run(outImage, pipeline); // run the pipeline on the image.
 

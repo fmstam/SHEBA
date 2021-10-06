@@ -16,7 +16,7 @@ public class Pipeline {
 
     LinkedList<Task> chain = new LinkedList<Task>();
 
-    public void addBullet(Task task) {
+    public void addTask(Task task) {
         chain.addLast(task);
     }
 
@@ -26,7 +26,7 @@ public class Pipeline {
      * @param plugin
      * @param payload
      */
-    public void addBullet(Plugin plugin, Object... payload) {
+    public void addTask(Plugin plugin, Object... payload) {
         chain.add(new Task(plugin, payload));
     }
 
